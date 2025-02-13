@@ -1,0 +1,470 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica', sans-serif;
+    text-align: center;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%; 
+    margin: 0 auto;
+    padding: 0; 
+    text-align: center;
+}
+
+#image-header {
+    width: 100%; 
+    height: 14vh; 
+    object-fit: cover;
+    display: block; 
+    margin: 0; 
+    padding: 0; 
+}
+
+#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#hero h1 {
+    margin-top: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#timeBox {
+    display: flex;
+    gap: 10vw;
+    justify-content: center;
+}
+
+.time {
+    text-align: center;
+}
+
+.time h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#picturesOfYou {
+    margin-bottom: 100px;
+}
+
+#picturesOfYou p {
+    padding: 5rem 3rem 5rem 3rem;
+    font-size: 1.2rem; 
+}
+
+.ganda {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+.flip-card {
+    width: 90%; 
+    max-width: 400px;
+    height: 250px; 
+    perspective: 1000px;
+}
+
+.flip-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease-in-out; 
+}
+
+.flip-front, .flip-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box; 
+}
+
+.flip-front {
+    background: white;
+}
+
+.flip-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+    background: #FDF4F5;
+    color: black;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; 
+    height: 100%; 
+    position: absolute;
+    box-sizing: border-box;
+}
+
+#songsDedicated {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#songsDedicated p {
+    padding: 0 3rem 5rem 3rem;
+    font-size: 1.2rem; 
+}
+
+.music-container {
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 0 20px 20px 0 #0b021f3d;
+    display: flex;
+    padding: 20px 30px;
+    position: relative;
+    margin: 50px 0;
+    width: 90%; 
+    max-width: 500px; 
+    z-index: 10;
+}
+
+.img-container {
+    position: relative;
+    width: 120px;
+}
+
+.img-container::after {
+    content: '';
+    background-color: #ffffff;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 50%;
+    bottom: 70%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img-container img {
+    width: inherit;
+    height: 120px;
+    border-radius: 50%; 
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: rotate 3s linear infinite;
+    animation-play-state: paused;
+}
+
+.music-container.play .img-container img {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    margin-left: 40px;
+}
+
+.action-btn {
+    background-color: #fff;
+    border: 0;
+    color: #5c1a7a;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 20px;
+    opacity: 0.8;
+}
+
+.action-btn-big {
+    font-size: 30px;
+}
+
+.action-btn:focus {
+    outline: 0;
+}
+
+.action-btn:hover {
+    outline: 0;
+    opacity: 1;
+}
+
+.music-info {
+    background-color: #FDF4F5;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: calc(100% - 200px);
+    padding: 10px 20px 10px 140px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.music-info h4 {
+    margin: 0px;
+    color: #5c1a7a;
+    padding-top: 10px;
+}
+
+.music-container.play .music-info {
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.progress-volume-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.progress-container {
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 4px;
+    width: 75%;
+    opacity: 0.7;
+}
+
+.progress-container:hover {
+    opacity: 1; 
+}
+
+.progress {
+    background-color: #5c1a7a;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20%; /* Full-width */
+    height: 4px;
+    margin-top: 10px;
+    background: #ffffff;
+    opacity: 0.7;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.slider:hover {
+    opacity: 1; 
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 12px;
+    height: 12px; 
+    border-radius: 50%;
+    background: #5c1a7a; 
+}
+
+:root {
+    --primary: #fff;
+    --bg-color: rgb(5, 53, 61);
+    --bg-envelope-color: #f5edd1;
+    --envelope-tab: #ecdeb8;
+    --envelope-cover: #e6cfa7;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --txt-color: #444;
+    --heart-color: rgb(252, 8, 231);
+}
+
+#letter {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    height: 60vh;
+    display: grid;
+    place-items: center;
+}
+
+.envelope-wrapper {
+    position: relative;
+}
+
+.container > .envelope-wrapper {
+    background: var(--bg-envelope-color);
+    box-shadow: 0 0 40px var(--shadow-color);
+}
+
+.envelope-wrapper > .envelope {
+    position: relative;
+    width: 300px;
+    height: 230px;
+}
+
+.envelope-wrapper > .envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border-top: 130px solid var(--envelope-tab);
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out 0.7s;
+}
+
+.envelope-wrapper > .envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    border-top: 130px solid transparent;
+    border-right: 150px solid var(--envelope-cover);
+    border-bottom: 100px solid var(--envelope-cover);
+    border-left: 150px solid var(--envelope-cover);
+}
+
+.envelope > .letter {
+    position: absolute;
+    right: 20%;
+    bottom: 0;
+    width: 54%;
+    height: 80%;
+    background: var(--primary);
+    text-align: center;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 5px var(--shadow-color);
+    padding: 20px 10px;
+}
+
+.envelope > .letter > .text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--txt-color);
+    text-align: left;
+    font-size: 10px;
+}
+
+.heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    z-index: 4;
+    transform: translate(-50%, -20%) rotate(45deg);
+    transition: transform 0.5s ease-in-out 1s;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    cursor: pointer;
+}
+
+.heart:before, 
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--heart-color);
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -7.5px;
+}
+
+.heart:after {
+    right: 7.5px;
+}
+
+.flap > .envelope:before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.flap > .envelope > .letter {
+    bottom: 100px;
+    transform: scale(1.5);
+    transition-delay: 1s;
+}
+
+.flap > .heart {
+    transform: rotate(90deg);
+    transition-delay: 0.4s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 1.5rem;
+    }
+
+    #timeBox {
+        gap: 5vw; 
+    }
+
+    .time h2 {
+        font-size: 1.2rem; 
+    }
+
+    #picturesOfYou p {
+        font-size: 1rem; 
+    }
+
+    .flip-card {
+        width: 100%;
+    }
+
+    .music-container {
+        width: 90%; 
+    }
+}
